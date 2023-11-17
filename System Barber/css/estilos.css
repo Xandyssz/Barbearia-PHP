@@ -1,0 +1,170 @@
+/* Estilos do corpo da página */
+body {
+    background-color: #212529;
+    color: rgb(255, 208, 0);
+    font-family: Arial, sans-serif;
+    margin: 0; /* Remove margens padrão do corpo */
+    padding: 0; /* Remove espaçamentos internos padrão do corpo */
+}
+
+/* Estilos da barra de navegação */
+.navbar {
+    background-color: #212529;
+    color: rgb(255, 208, 0);
+}
+
+.navbar-brand {
+    color: rgb(255, 208, 0);
+    padding-left: 10px;
+}
+
+/* Estilos para cabeçalho e seções */
+header, section {
+    padding: 20px;
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilos para exemplos de serviço */
+.service-card {
+    width: 10rem;
+    background-color: transparent;
+    color: rgb(255, 208, 0);
+    border: 1px solid rgb(255, 208, 0);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px; /* Aumenta o espaçamento entre os cartões */
+    text-align: left; /* Alinha o texto à esquerda dentro dos cartões */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adiciona sombra aos cartões */
+}
+
+.service-card img {
+    max-width: 100%;
+}
+
+/* Estilos para a seção "Outros Serviços" */
+section.text {
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Estilos para rodapé */
+footer {
+    background-color: #212529;
+    color: rgb(255, 208, 0);
+    text-align: center;
+    padding-top: 10em;
+}
+
+/* Estilos para links na barra de navegação */
+.navbar a {
+    color: rgb(255, 208, 0) !important;
+    transition: color 0.3s; /* Adiciona uma transição de cor suave */
+}
+
+.navbar a:hover {
+    color: #fff !important; /* Altera a cor ao passar o mouse sobre os links */
+}
+
+/* Estilos do corpo da página */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos da barra de navegação */
+.navbar {
+    background-color: #212529;
+    color: rgb(255, 208, 0);
+}
+
+.navbar-brand {
+    color: rgb(255, 208, 0) !important;
+    padding-left: 10px;
+}
+
+/* Estilos para os links do menu */
+.navbar-nav .nav-link {
+    padding-left: 100px;
+    color: black;
+}
+
+/* Estilos para o formulário de pesquisa */
+.form-control {
+    border-color: rgb(255, 208, 0);
+}
+
+.btn-outline-success {
+    color: rgb(255, 208, 0);
+    background-color: transparent;
+    border-color: rgb(255, 208, 0);
+}
+
+/* Estilos para a seção principal */
+.container-fluid.div {
+    background-image: url(../images/bg-2.jpg);
+    height: 140vh;
+    margin: auto;
+}
+
+/* Estilos para o cabeçalho */
+.heading-section {
+    color: rgb(255, 208, 0);
+    text-align: center;
+}
+
+.subheading {
+    font-family: monospace;
+}
+
+/* Estilos para os títulos */
+.fw-bold {
+    font-weight: bold;
+}
+
+.fst-italic {
+    font-style: italic;
+}
+
+.fs-1 {
+    font-size: 2.5rem;
+}
+
+.font-monospace {
+    font-family: monospace;
+}
+
+.text-decoration-underline {
+    text-decoration: underline;
+}
+.custom-section {
+    height: 130vh;
+    background-color: #212529;
+    color: rgb(255, 208, 0);
+    padding-top: 4em;
+    padding-bottom: 4em;
+  }
+
+  .custom-section-2 {
+    height: 30vh;
+    background-color: #212529;
+    color: rgb(255, 208, 0);
+    padding-top: 4em;
+    padding-bottom: 4em;
+  }
+  .custom-section-3 {
+    height: 150vh;
+    background-color: #212529;
+    color: rgb(255, 208, 0);
+    padding-top: 4em;
+    padding-bottom: 4em;
+  }
+
+  .container {
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+  }
+  .cor-bot-card{
+    color: rgb(255, 208, 0);
+    background-color: transparent;
+    border-color: rgb(255, 208, 0);
+  }
+
+  
