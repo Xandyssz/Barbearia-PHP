@@ -9,33 +9,33 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" class="">
-                <a style="padding-left: 100px;" class="nav-link" href="#home" role="button" aria-expanded="false">
-                    Menu
-                </a>
-                <a style="padding-left: 50px;" class="nav-link" href="#servicos" role="button" aria-expanded="false">
+                <a style="padding-left: 100px;" class="nav-link" href="sysb_index.php#servicos" role="button" aria-expanded="false">
                     Serviços
                 </a>
-                <a style="padding-left: 50px;" class="nav-link" href="#galeria" role="button" aria-expanded="false">
+                <a style="padding-left: 50px;" class="nav-link" href="sysb_index.php#profissionais" role="button" aria-expanded="false">
+                    Profissionais
+                </a>
+                <a style="padding-left: 50px;" class="nav-link" href="sysb_index.php#galeria" role="button" aria-expanded="false">
                     Galeria
                 </a>
-                <a style="padding-left: 50px;" class="nav-link" href="sysb_agendar.php" role="button"
-                   aria-expanded="false">
-                    Agendar
-                </a>
-                <a style="padding-left: 50px;" class="nav-link" href="login.php" role="button" aria-expanded="false">
-                    Login
-                </a>
-
                 <a style="padding-left: 50px;" class="nav-link" href="sysb_sobre.php" role="button"
                    aria-expanded="false">
-                    Sobre
+                    Contato
+                </a>
+                <a style="padding-left: 50px;" class="nav-link" href="sysb_agendar.php" role="button" aria-expanded="false">
+                    Agendar
+                </a>
+
+                <a style="padding-left: 50px;" class="nav-link" href="login.php" role="button"
+                   aria-expanded="false">
+                    Login
                 </a>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
-                        Cadastrar
-                    </a>
+                        ADM
+                        </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="PainelAdminCadastrarBarbeiro.php">Barbeiro</a></li>
                         <li><a class="dropdown-item" href="PainelAdminCadastrarCliente.php">Usuario</a></li>
@@ -46,14 +46,6 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search"
-                       style="border-color: rgb(255, 208, 0);;">
-                <button class="btn btn-outline-success" type="submit"
-                        style="color: rgb(255, 208, 0); background-color: transparent; border-color: rgb(255, 208, 0);;">
-                    Pesquisar
-                </button>
-            </form>
         </div>
     </div>
 </nav>

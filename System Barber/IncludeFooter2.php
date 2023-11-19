@@ -2,7 +2,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-center mx-auto">
-                    Quer dar um impulso à sua confiança? Nossos barbeiros talentosos e estilistas estão prontos para transformar sua aparência. Reserve um horário e deixe-nos ajudá-lo a alcançar o visual que você deseja.
                 </h5>
                 <hr class="my-4">
             </div>

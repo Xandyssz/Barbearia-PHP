@@ -11,8 +11,6 @@
 
     <link rel="stylesheet" href="css/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 
@@ -74,8 +72,8 @@
         <hr style="color: lightgrey;">
 
         <div class="row justify-content-center">
-            <div class="col-md-12 heading-section text-center" style="color: rgb(255,255,255);">
-                <span class="subheading">Conheça nossa equipe</span>
+            <div class="col-md-12 heading-section text-center" style="color: rgb(255,255,255);" >
+                <span class="subheading" id="profissionais">Conheça nossa equipe</span>
                 <h2 class="mb-4">Profissionais</h2>
             </div>
 
@@ -103,9 +101,7 @@
         <?php include_once('IncludeGaleriaFotos.php'); ?>
         <p></p>
         <hr style="color: lightgrey;">
-
         <?php include_once('IncludeFooter.php'); ?>
-
     </div>
 </body>
 
