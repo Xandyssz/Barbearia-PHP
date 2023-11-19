@@ -92,21 +92,37 @@ body {
 }
 
 .btn-outline-success {
-    color: rgb(255, 208, 0);
+    color: white; /* Altera a cor do texto para branco */
+    text-decoration: none; /* Remove a decoração de link padrão */
     background-color: transparent;
-    border-color: rgb(255, 208, 0);
+    border: 1px solid rgb(255, 208, 0);
+    padding: 8px 16px; /* Ajuste conforme necessário */
+    cursor: pointer;
 }
+
+/* Adicione este estilo se desejar um efeito de transição suave */
+.btn-outline-success:hover {
+    background-color: rgb(255, 208, 0, 0.1); /* Adapte a opacidade conforme necessário */
+}
+
 
 /* Estilos para a seção principal */
 .container-fluid.div {
     background-image: url(../images/bg-2.jpg);
-    height: 140vh;
-    margin: auto;
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Alterado para 100vh para ocupar 100% da altura da tela */
+    margin: 0; /* Removido o margin auto para garantir que a largura ocupe 100% */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 
 /* Estilos para o cabeçalho */
 .heading-section {
-    color: rgb(255, 208, 0);
+    color: rgb(255, 255, 255);
     text-align: center;
 }
 

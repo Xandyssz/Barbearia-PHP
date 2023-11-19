@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('conexao.php');  // se ele clicou no botão salvar
+include_once('conexao.php');
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +72,7 @@ if (isset($_POST['salvar'])) {
     WHERE users.email = '$email'";
     $row = mysqli_query($conn, $query);
     if (mysqli_num_rows($row) > 0) {
-//        echo "<script type='text/javascript'>OpcaoMensagens(4);</script>";
+        echo "<script type='text/javascript'>OpcaoMensagens(4);</script>";
         echo "Email Já em Uso";
 
     } else {
@@ -81,8 +81,8 @@ if (isset($_POST['salvar'])) {
         VALUES 
             ('$nome', '$cpf', '$email', '$senhaCript')";
         $row = mysqli_query($conn, $result);
-//        echo "<script type='text/javascript'>OpcaoMensagens(1);</script>";
-//        echo '<meta HTTP-EQUIV="Refresh" CONTENT="0; URL=login.php">';
+        echo "<script type='text/javascript'>OpcaoMensagens(1);</script>";
+        echo '<meta HTTP-EQUIV="Refresh" CONTENT="0; URL=login.php">';
     }
 
 }
