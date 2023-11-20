@@ -1,6 +1,18 @@
 <?php
 session_start();
 include_once('sessao.php');
+
+if(!isset($_SESSION["tipo_acesso"]))
+{
+// Usuário não logado! Redireciona para a página de login
+    header("location: sysb_index.php");
+}else if($_SESSION['tipo_acesso'] != "Profissional" && $_SESSION['tipo_acesso'] != "Usuario")
+{
+    header("location: sysb_home.php");
+}
+?>
+
+
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +124,7 @@ include_once('sessao.php');
         </div>
         <div class="row justify-content-center">
             <div class="col-md-10 ftco-animate">
-                <form action="login.html" class="appointment-form">
+                <form action="login.php" class="appointment-form">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group mb-1 mt-1">
@@ -132,6 +144,7 @@ include_once('sessao.php');
                                        style="border-color: rgb(255, 208, 0);" required>
                             </div>
                         </div>
+
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <input type="time" class="form-control appointment_time mb-1 mt-1 "
@@ -190,7 +203,7 @@ include_once('sessao.php');
                     <div class="form-group mb-4 mt-4" align="center">
                         <input type="submit" value="Finalizar agendamento" class="btn btn-primary"
                                style="border-color: rgb(255, 208, 0); color: rgb(255, 208, 0); background-color: transparent;">
-                        <link rel="stylesheet" href="cadastro.html" required>
+                        <link rel="stylesheet" href="CrudUsuarioCadastrar.php" required>
                     </div>
                 </form>
             </div>

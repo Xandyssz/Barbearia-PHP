@@ -1,88 +1,237 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+include_once('sessao.php');
+include_once('conexao.php');
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/styles.css">
-	<title>Tela de administrador</title>
-</head>
+if (!isset($_SESSION["tipo_acesso"])) {
+// Usuário não logado! Redireciona para a página de login
+    header("location: sysb_index.php");
+} else if ($_SESSION['tipo_acesso'] != "Administrador") {
+    header("location: sysb_home.php");
+}
+?>
 
-<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <!-- ARQUIVOS JAVA SCRIPT -->
+    <script src="js/funcoes.js"></script>
+    <!--Header-->
+    <title>SYSB - Cadastrar Serviço</title>
+    <?php include('includes/header.php'); ?>
+    <!--End Header-->
 
-	<?php
-	include_once('IncludeHeaderADM.php');
-	include "_funcoesConfigBanco.php";
-	include "_funcoesGerais.php";
-	if (isset($_GET["salvar"])) {
+    <body>
+    <div class="be-wrapper be-fixed-sidebar">
+        <!--Navigation bar-->
+        <?php include("includes/navbar.php"); ?>
+        <!--Navigation-->
 
-		$descricao     = $_GET["descricao"];
-		$preco    = $_GET["preco"];
-		$tempoestimado    = $_GET["tempoestimado"];
-		$codigoservico    = $_GET["codigoservico"];
+        <!--Sidebar-->
+        <?php include("includes/sidebar.php"); ?>
+        <!--Sidebar-->
+        <div class="be-content">
+            <div class="main-content container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="PainelAdminAgenda.php">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="#">Serviço</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Cadastrar Serviço</li>
+                            </ol>
+                        </nav>
+                        <div class="card card-border-color card-border-color-primary">
+                            <div class="card-header card-header-divider">Adicionar Detalhes do Serviço<span
+                                        class="card-subtitle">Por favor, preencha os dados necessários.</span></div>
+                            <div class="card-body">
+                                <form method="POST">
 
-		$sql = "INSERT INTO servico(descricao, preco, tempoestimado, codigoservico) VALUES ( '$descricao', $preco, $tempoestimado, $codigoservico) ";
-		var_dump($sql);
-		$con = conectarBanco("SYSB");
-		$res = executarInsert($con, $sql);
+                                    <div class="form-group row">
+                                        <label class="col-12 col-sm-3 col-form-label text-sm-right" for="nomeExame">Digite
+                                            o Nome do Serviço</label>
+                                        <div class="col-12 col-sm-8 col-lg-6">
+                                            <input class="form-control" id="nomeServico" name="nomeServico" type="text"
+                                                   required>
+                                        </div>
+                                    </div>
 
+                                    <div class="form-group row">
+                                        <label class="col-12 col-sm-3 col-form-label text-sm-right"
+                                               for="descricaoServico">Digite a Descrição do Serviço</label>
+                                        <div class="col-12 col-sm-8 col-lg-6">
+                                            <input class="form-control" id="descricaoServico" name="descricaoServico"
+                                                   type="text" required>
+                                        </div>
+                                    </div>
 
-		if ($res) {
-			$msg = "Serviço $descricao cadastrado!";
-		} else {
-			$msg = "Houve um erro ao cadastrar o serviço $descricao.";
-		}
-		desconectarBanco($con);
-	}
+                                    <div class="form-group row">
+                                        <label class="col-12 col-sm-3 col-form-label text-sm-right" for="tempoServico">Temp
+                                            Estimado de Serviço</label>
+                                        <div class="col-12 col-sm-8 col-lg-6">
+                                            <input class="form-control" id="tempoServico" name="tempoServico"
+                                                   type="time" required>
+                                        </div>
+                                    </div>
 
+                                    <div class="form-group row">
+                                        <label class="col-12 col-sm-3 col-form-label text-sm-right" for="valorServico">Digite
+                                            o Valor do Exame</label>
+                                        <div class="col-12 col-sm-8 col-lg-6">
+                                            <input class="form-control" id="valorServico" name="valorServico"
+                                                   type="text" required>
+                                        </div>
+                                    </div>
 
+                                    <div class="col-sm-6">
+                                        <p class="text-right">
 
-	?>
-
-	<?php 
-      if( isset( $_GET["salvar"] ) ){
-      ?>
-        <div class="text-center bg-dark text-white p-1 fs-2 mt-4">
-          <?php 
-              echo $msg;
-          ?>
+                                            <input type="submit" id="Registrar" name="Registrar"
+                                                   class="btn btn-primary pull-right" value="Registrar">
+                                            <br>
+                                    </div>
+                            </div>
+                            <br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      <?php 
-      }
-      ?>
+    </div>
+    </div>
+    </div>
+
+    <!-- FORMATAR (TELEFONE FIXO, TELEFONE CELULAR, CEP, CNPJ, CPF E DATA) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script>
+        $("#valorServico").mask("R$999,99");
+
+    </script>
+    <script>
+        $(#valorServico).mask("R$999,99");
+    </script>
 
 
-	<div class="container">
-		<!-- Tela de Cadastro -->
-		<div class="form-container">
-			<h2>Cadastro de Serviço</h2>
-			<form method="GET" action="PainelAdminCadastrarServico.php">
-				<div class="form-group">
-					<label>Descrição:</label>
-					<input type="text" id="descricao" name="descricao" placeholder="Digite a descrição do serviço">
-				</div>
-				<div class="form-group">
-					<label>Preço</label>
-					<input type="price" id="preco" name="preco" placeholder="Digite o preço">
-				</div>
-				<div class="form-group">
-					<label>Codigo Serviço</label>
-					<input type="number" id="codigoservico" name="codigoservico" placeholder="Digite o código">
-				</div>
-				<div class="form-group">
-					<label>Tempo estimado</label>
-					<input type="number" id="tempo" name="tempoestimado" placeholder="Digite o tempo estimado(Em segundos)">
-				</div>
-				<input type="submit" name="salvar" class="btn btn-dark pull-center" value="Cadastrar"
-                                   onclick="window.location.href = 'listarServico.php'" />
-			</form>
-		</div>
-	</div>
+    <!-- JANELA MODAL -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <div id="msgInsert" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-center">
+                    <h5 class="modal-title" id="visulTipo ExameModalLabel">Informação!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Serviço Cadastrado com Sucesso!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="msgErro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-center">
+                    <h5 class="modal-title" id="visulTipo ExameModalLabel">Informação!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Ocorreu um erro!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="msgconflito" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-center">
+                    <h5 class="modal-title" id="visulUsuarioModalLabel">Informação!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Ocorreu um erro, Serviço já cadastrado!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+    <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>
+    <script src="assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="assets/js/app.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery-flot/jquery.flot.pie.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery-flot/jquery.flot.time.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery-flot/jquery.flot.resize.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery-flot/plugins/jquery.flot.orderBars.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery-flot/plugins/curvedLines.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery-flot/plugins/jquery.flot.tooltip.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery.sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+    <script src="assets/lib/countup/countUp.min.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="assets/lib/canvas/canvasjs.min.js"></script>
+    <script src="assets/lib/canvas/jquery.canvasjs.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //-initialize the javascript
+            App.init();
+            App.dashboard();
 
-</body>
+        });
+    </script>
 
-</html>
+    </body>
+
+    </html>
+
+<?php
+
+if (isset($_POST['Registrar'])) {
+    $nome = $_POST['nomeServico'];
+    $descricao = $_POST['descricaoServico'];
+    $tempo = $_POST['tempoServico'];
+    $valor = $_POST['valorServico'];
+
+    $query = "SELECT * FROM sysb.servico serv 
+    WHERE serv.nome = '$nome'";
+
+
+    $row = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($row) > 0) {
+        echo "<script>$(document).ready(function() { $('#msgconflito').modal(); })</script>";
+        echo '<meta HTTP-EQUIV="Refresh" CONTENT="2; URL=PainelAdminCadastrarTipoExame.php">';
+
+    } else {
+        $result = "INSERT INTO sysb.servico (nome, descricao, tempo, valor) 
+        VALUES ('$nome', '$descricao', '$tempo', '$valor')";
+        $row = mysqli_query($conn, $result);
+        echo "<script>$(document).ready(function() { $('#msgInsert').modal(); })</script>";
+        echo '<meta HTTP-EQUIV="Refresh" CONTENT="2; URL=PainelAdminListarTipoExame.php">';
+    }
+
+}
+?>

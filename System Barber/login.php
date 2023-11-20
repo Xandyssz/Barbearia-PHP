@@ -2,32 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SYSB - Login</title>
 
-    <!-- ARQUIVOS CSS -->
-    <link rel="stylesheet" href="css/styles.css">
 
-    <!-- TITULO DA PAGINA -->
-    <title>Tela de Login</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/funcoes.js"></script>
+
 </head>
 <body>
-    <div class="container">
-        <div class="form-container">
-            <h2>Login</h2>
-            <form action="Autenticador.php" method="post">
-                <div class="form-group">
-                    <label for="username">Email:</label>
-                    <input type="text" name="email" id="email" placeholder="Digite seu usuário" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Senha:</label>
-                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
-                </div>
+
+<section class="book" id="book">
+
+    <h1 class="heading"><span>REALIZAR</span>-LOGIN</h1>
+
+    <div class="row">
+        <form class="user" action="Autenticador.php" method="post">
+            <h3>LOGIN</h3>
+            <input type="text" name="email" id="email" placeholder="Digite o Email" class="box" required>
+            <input type="password" name="senha" id="senha" placeholder="Digite a senha" class="box" required>
+            <div class="form-group">
                 <button type="submit" name="login" id="login" class="btn btn-primary btn-user btn-block">Conecte-se</button>
-<!--                <button class="btn btn-outline-warning"><a class="btn-outline-success" href="sysb_home.php">Login</a></button>-->
-                <button class="btn btn-outline-warning"><a class="btn-outline-success" href="CrudUsuarioCadastrar.php">Cadastrar</a></button>
-            </form>
+                <input type="button" name="Registrar-se" class="btn btn-info" value="Registrar-se" onclick="window.location.href='CrudUsuarioCadastrar.php'"/>
+                    <input type="button" name="cancelar" id="cancelar" class="btn btn-danger" onclick="location.href='sysb_contato.php'" value="Voltar">
+            </div>
+        </form>
+        <div class="image">
+            <img src="images/barbershop%20team.gif" alt="">
         </div>
     </div>
+
+</section>
 </body>
 </html>

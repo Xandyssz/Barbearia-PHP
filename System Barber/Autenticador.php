@@ -1,10 +1,13 @@
+<script src="js/funcoes.js"></script>
+
+
 <?php
 include_once("conexao.php");
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
 if (!empty($_POST) && (empty($_POST['email']) || empty($_POST['senha']))) {
-//    echo "<script>loginMensagem();</script>";
+    echo "<script>loginMensagem();</script>";
 } else {
     session_start();
     $email_escape = addslashes($email);
@@ -32,7 +35,7 @@ if (!empty($_POST) && (empty($_POST['email']) || empty($_POST['senha']))) {
             $_SESSION['sessiontime'] = time() + 60 * 30;
             header("location: sysb_home.php"); // TUDO OK
         } else {
-//            echo "<script>loginMensagem();</script>";
+            echo "<script>loginMensagem();</script>";
             session_destroy();
             unset($_SESSION['codigo_usuario']);
             unset($_SESSION['nome']);
@@ -46,7 +49,7 @@ if (!empty($_POST) && (empty($_POST['email']) || empty($_POST['senha']))) {
             echo '<meta HTTP-EQUIV="refresh" CONTENT="0; URL=sair.php">';
         }
     } else {
-//        echo "<script>loginMensagem();</script>";
+        echo "<script>loginMensagem();</script>";
         echo '<meta HTTP-EQUIV="refresh" CONTENT="0; URL=sair.php">';
 
     }

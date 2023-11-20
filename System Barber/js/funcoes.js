@@ -27,7 +27,7 @@ function OpcaoMensagens($id){
 
     if ($id === 4)
     {
-        window.alert('Registro já cadastrado!');
+        window.alert('Email em Uso!');
     }
 
     if ($id === 5)

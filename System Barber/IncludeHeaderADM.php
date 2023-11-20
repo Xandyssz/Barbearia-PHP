@@ -51,13 +51,20 @@
                 </li>
 
                 <li class="nav-item">
-                    <a style="padding-left: 650px;" class="nav-link"
+                    <a style="padding-left: 20px;" class="nav-link"
+                       aria-expanded="false">
+                        <?php echo "Acesso: " . $_SESSION['tipo_acesso']; ?>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a style="padding-left: 520px;" class="nav-link"
                        aria-expanded="false">
                     </a>
                 </li>
 
                 <?php
-                } elseif ($_SESSION["tipo_acesso"] == "Profissional") {
+                } elseif ($_SESSION["tipo_acesso"] == "Administrador") {
                     ?>
 
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -102,13 +109,12 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                aria-expanded="false">
-                                ADM
+                                Painel
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="PainelAdminCadastrarBarbeiro.php">Barbeiro</a></li>
-                                <li><a class="dropdown-item" href="PainelAdminCadastrarCliente.php">Usuario</a></li>
+                                <li><a class="dropdown-item" href="PainelAdminCadastrarUsuario.php">Usuario</a></li>
                                 <li><a class="dropdown-item" href="PainelAdminCadastrarServico.php">Servico</a></li>
-                                <li><a class="dropdown-item" href="PainelAdminListarBarbeiro.php">Listar Barbeiro</a>
+                                <li><a class="dropdown-item" href="PainelAdminListarProfissional.php">Listar Barbeiro</a>
                                 </li>
                                 <li><a class="dropdown-item" href="PainelAdminListarCliente.php">Listar Cliente</a></li>
                                 <li><a class="dropdown-item" href="PainelAdminListarServico.php">Listar Servico</a></li>
@@ -125,8 +131,70 @@
                     </ul>
 
                     <?php
-                }
-                ?>
+            }elseif ($_SESSION["tipo_acesso"] == "Profissional") {
+            ?>
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a style="padding-left: 100px;" class="nav-link" href="sysb_home.php#servicos" role="button"
+                               aria-expanded="false">
+                                Serviços
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="padding-left: 50px;" class="nav-link" href="sysb_home.php#profissionais"
+                               role="button"
+                               aria-expanded="false">
+                                Profissionais
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="padding-left: 50px;" class="nav-link" href="sysb_home.php#galeria" role="button"
+                               aria-expanded="false">
+                                Galeria
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="padding-left: 50px;" class="nav-link" href="sysb_contato.php" role="button"
+                               aria-expanded="false">
+                                Contato
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="padding-left: 50px;" class="nav-link" href="sysb_agendar.php" role="button"
+                               aria-expanded="false">
+                                Agendar
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a style="padding-left: 20px;" class="nav-link"
+                               aria-expanded="false">
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Painel
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="PainelAdminAgenda.php">Agenda</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a style="padding-left: 20px;" class="nav-link"
+                               aria-expanded="false">
+                                <?php echo "Acesso: " . $_SESSION['tipo_acesso']; ?>
+                </a>
+                </li>
+
+            </ul>
+
+             <?php
+
+            }   ?>
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">

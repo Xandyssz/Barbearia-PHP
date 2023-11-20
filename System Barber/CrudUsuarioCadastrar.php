@@ -8,51 +8,48 @@ include_once('conexao.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/funcoes.js"></script>
     <title>Tela de Cadastro de Usuário</title>
 </head>
 <body>
 
 <!--------------------------------------------------------------------------------->
-<div class="container">
-    <div class="form-container">
-        <h2>Cadastro de Usuário</h2>
-        <form method="POST" action="">
+<section class="book" id="book">
 
-            <div class="form-group">
-                <label>Nome:</label>
-                <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
-            </div>
+    <h1 class="heading"> <span>REALIZAR</span>-CADASTRO</h1>
 
-            <div class="form-group">
-                <label>CPF:</label>
-                <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF">
-            </div>
+    <div class="row">
 
-            <div class="form-group">
-                <label>Email:</label>
-                <input type="email" id="email" name="email" placeholder="Digite um email">
-            </div>
 
-            <div class="form-group">
-                <label>Nova Senha:</label>
-                <input type="password" id="senha" name="senha" placeholder="Escolha uma senha">
-            </div>
-
-            <button type="submit" name="salvar" id="salvar" class="btn btn-primary btn-user btn-block">Registrar-se
-            </button>
+        <form action="" method="POST"> <!-- PARA LISTAR NO BANCO DE DADOS NO [ACTION - PRECISA SER # se não não grava no BANCO -->
+            <h3>REGISTRO</h3>
+            <input type="text"  name="nome" id="nome" placeholder="Digite o Nome Completo" class="box" required>
+            <input type="text" name="cpf"  id="cpf" placeholder="Digite o CPF" class="box" required>
+            <input type="email"  name="email" id="email" placeholder="Digite o email" class="box" required>
+            <input type="password"  name="senha" id="senha" placeholder="Digite a senha" class="box" required>
+            <input type="text" name="celular" id="celular" placeholder="Digite Numero de Contato" class="box" required>
+            <input type="text" name="endereco" id="endereco" placeholder="Digite o endereco" class="box" required>
+            <input type="submit" name="cadastrar" id="cadastrar" class="btn btn-danger" value="cadastrar">
+            <input type="button" name="cancelar" id="cancelar" class="btn btn-danger" onclick="location.href='sysb_home.php'" value="Voltar">
         </form>
+        <div class="image">
+            <img src="images/Barber-cuate.svg" alt="">
+        </div>
     </div>
-</div>
+</section>
 <!--------------------------------------------------------------------------------->
 <!-- FORMATAR (TELEFONE FIXO, TELEFONE CELULAR, CEP, CNPJ, CPF E DATA) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <script>
     $("#cpf").mask("999.999.999-99");
+    $("#celular").mask("(99)99999-9999");
+
 </script>
 <script>
     $(#cpf).mask("999.999.999-99");
+    $("#celular").mask("(99)99999-9999");
 </script>
 <!--------------------------------------------------------------------------------->
 </body>
@@ -61,25 +58,26 @@ include_once('conexao.php');
 
 <?php
 
-if (isset($_POST['salvar'])) {
+if (isset($_POST['cadastrar'])) {
     $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $senhaCript = password_hash($senha, PASSWORD_DEFAULT);
+    $celular = $_POST['celular'];
+    $endereco = $_POST['endereco'];
 
     $query = "SELECT * FROM sysb.usuarios users
     WHERE users.email = '$email'";
     $row = mysqli_query($conn, $query);
     if (mysqli_num_rows($row) > 0) {
         echo "<script type='text/javascript'>OpcaoMensagens(4);</script>";
-        echo "Email Já em Uso";
 
     } else {
         $result = "INSERT INTO sysb.usuarios 
-        (nome, cpf, email, senha) 
+        (nome, cpf, email, senha, celular, endereco) 
         VALUES 
-            ('$nome', '$cpf', '$email', '$senhaCript')";
+            ('$nome', '$cpf', '$email', '$senhaCript', '$celular', '$endereco')";
         $row = mysqli_query($conn, $result);
         echo "<script type='text/javascript'>OpcaoMensagens(1);</script>";
         echo '<meta HTTP-EQUIV="Refresh" CONTENT="0; URL=login.php">';

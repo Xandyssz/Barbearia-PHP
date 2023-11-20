@@ -6,6 +6,7 @@ if (!isset($_SESSION["tipo_acesso"])) {
     header("location: sysb_index.php");
 }
 ?>
+
 <!DOCTYPE html>
 
 <html lang="en">

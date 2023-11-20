@@ -107,7 +107,7 @@ footer {
 
 /* Estilos para links na barra de navegação */
 .navbar a {
-    color: rgb(0, 0, 0) !important;
+    color: rgb(255, 197, 0) !important;
     transition: color 0.3s; /* Adiciona uma transição de cor suave */
 }
 
