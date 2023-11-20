@@ -86,6 +86,16 @@ body {
     color: black;
 }
 
+.navbar-dark .navbar-nav .dropdown-menu {
+    background-color: #343a40; /* Cor de fundo do dropdown */
+}
+
+.navbar-dark .navbar-nav .dropdown-menu .dropdown-item:hover,
+.navbar-dark .navbar-nav .dropdown-menu .dropdown-item:focus {
+    background-color: #555; /* Cor de fundo do item do dropdown ao passar o mouse ou focar */
+    color: #ffcc00; /* Cor do texto do item do dropdown ao passar o mouse ou focar */
+}
+
 /* Estilos para o formulário de pesquisa */
 .form-control {
     border-color: rgb(255, 208, 0);
@@ -150,40 +160,43 @@ body {
 .text-decoration-underline {
     text-decoration: underline;
 }
+
 .custom-section {
     height: 130vh;
     background-color: #212529;
     color: rgb(255, 208, 0);
     padding-top: 4em;
     padding-bottom: 4em;
-  }
+}
 
-  .custom-section-2 {
+.custom-section-2 {
     height: 30vh;
     background-color: #212529;
     color: rgb(255, 208, 0);
     padding-top: 4em;
     padding-bottom: 4em;
-  }
-  .custom-section-3 {
+}
+
+.custom-section-3 {
     height: 150vh;
     background-color: #212529;
     color: rgb(255, 208, 0);
     padding-top: 4em;
     padding-bottom: 4em;
-  }
+}
 
-  .container {
+.container {
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
-  }
-  .cor-bot-card{
+}
+
+.cor-bot-card {
     color: rgb(255, 208, 0);
     background-color: transparent;
     border-color: rgb(255, 208, 0);
-  }
+}
 
-  /*----------*/
+/*----------*/
 #contact-form label {
     margin-bottom: 5px;
 }

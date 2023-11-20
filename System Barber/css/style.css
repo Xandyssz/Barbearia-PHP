@@ -24,10 +24,7 @@ section {
     margin-right: 0;
 }
 
-.navbar-nav li a:hover {
-    border-bottom: 3px solid #ffc500;
-    color: #ffc500 !important;
-}
+
 
 .navbar-nav li ul {
     width: 160px;

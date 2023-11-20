@@ -12,10 +12,10 @@
         <!-- Adicionando os links na forma horizontal -->
         <div class="row mt-4">
             <div class="col-md-6 text-center mx-auto">
-                <a href="./sysb_index.php" class="text-white mx-3">Home</a>
-                <a href="./sysb_sobre.php" class="text-white mx-3">Contato</a>
-                <a href="./sysb_index.php#servicos" class="text-white mx-3">Serviços</a>
-                <a href="./sysb_index.php#profissionais" class="text-white mx-3">Profissionais</a>
+                <a href="./sysb_home.php" class="text-white mx-3">Home</a>
+                <a href="sysb_contato.php" class="text-white mx-3">Contato</a>
+                <a href="./sysb_home.php#servicos" class="text-white mx-3">Serviços</a>
+                <a href="./sysb_home.php#profissionais" class="text-white mx-3">Profissionais</a>
             </div>
         </div>
 

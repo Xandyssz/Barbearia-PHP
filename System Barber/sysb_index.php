@@ -1,3 +1,20 @@
+<?php
+include_once('conexao.php');
+$sqlUser = "SELECT COUNT(*) AS qtd FROM sysb.usuarios";
+$result = mysqli_query($conn, $sqlUser);
+$rowBusca = mysqli_fetch_assoc($result);
+$qntBD = $rowBusca['qtd'];
+if ($qntBD == 0) {
+    $senha = "123";
+    $senhaCript = password_hash($senha, PASSWORD_DEFAULT);
+    $sqlInsereUser = "INSERT INTO sysb.usuarios (nome, cpf, email, senha, tipo_acesso, nivel_avaliacao, descricao)
+VALUES ('admin', '000.000.000-00', 'admin', '$senhaCript', 'Profissional', '1', 'Admin')";
+    echo "<br>";
+    mysqli_query($conn, $sqlInsereUser);
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +27,8 @@
 
 
     <link rel="stylesheet" href="css/estilos.css">
+
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
@@ -19,8 +38,17 @@
 
 <body class="bg-dark">
 
-<?php include_once('IncludeHeaderADM.php'); ?>
+<?php
 
+if (isset($_SESSION['tipo_acesso'])) {
+
+    $exibirTipodeAcesso = $_SESSION['tipo_acesso'];
+    include_once('IncludeHeaderADM.php');
+
+} else {
+    include_once('IncludeHeader.php');
+}
+?>
 <div class="container-fluid div">
     <div class="col-md-12 py-md-5 pb-5">
         <div class="heading-section mb-4 mt-md-5 text-center">

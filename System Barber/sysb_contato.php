@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once('sessao.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +26,17 @@
 </head>
 
 <body class="bg-dark">
-<?php include_once('IncludeHeaderADM.php'); ?>
+<?php
 
+if (isset($_SESSION['cpf'])) {
+
+    $exibirTipodeAcesso = $_SESSION['tipo_acesso'];
+    include_once('IncludeHeaderADM.php');
+
+} else {
+    include_once('IncludeHeader.php');
+}
+?>
 <section class="inner-content">
     <div class="container">
         <div class="row">
@@ -32,13 +46,13 @@
                     <h1 class="title-bottom-line">FORMULARIO DE <strong>CONTATO</strong></h1>
                     <p>nao sei oque por nao, preenche ae.</p>
                     <form action="#" method="POST" id="contact-form">
-                        <label for="name"></label><input type="text" name="name" id="name" placeholder="Seu Nome">
-                        <label for="surname"></label><input type="text" name="surname" id="surname" placeholder="SobreNome">
-                        <label for="phone"></label><input type="text" name="phone" id="phone" placeholder="Celular">
-                        <label for="email"></label><input type="text" name="email" id="email" placeholder="E-mail">
-                        <label for="city"></label><input type="text" name="city" id="city" placeholder="Cidade">
-                        <label for="state"></label><input type="text" name="state" id="state" placeholder="Estado">
-                        <label for="subject"></label><input type="text" name="subject" id="subject" placeholder="Motivo do seu contato" class="subject">
+                        <label for="name"></label><input type="text" name="name" id="name" placeholder="Seu Nome" required>
+                        <label for="surname"></label><input type="text" name="surname" id="surname" placeholder="SobreNome" required>
+                        <label for="phone"></label><input type="text" name="phone" id="phone" placeholder="Celular" required>
+                        <label for="email"></label><input type="text" name="email" id="email" placeholder="E-mail" required>
+                        <label for="city"></label><input type="text" name="city" id="city" placeholder="Cidade" required>
+                        <label for="state"></label><input type="text" name="state" id="state" placeholder="Estado" required>
+                        <label for="subject"></label><input type="text" name="subject" id="subject" placeholder="Motivo do seu contato" class="subject" required>
                         <input type="submit" name="submit" value="ENVIAR">
                     </form>
                     <div id="success">
@@ -57,7 +71,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapseOne" class="btn collapsed" role="button">System Barber - IF</a>
+                                    <a data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapseOne" class="btn collapsed" role="button">System Barber - IFSP-PEP</a>
                                 </h4>
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse">
