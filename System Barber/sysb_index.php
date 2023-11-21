@@ -7,8 +7,8 @@ $qntBD = $rowBusca['qtd'];
 if ($qntBD == 0) {
     $senha = "123";
     $senhaCript = password_hash($senha, PASSWORD_DEFAULT);
-    $sqlInsereUser = "INSERT INTO sysb.usuarios (nome, cpf, email, senha, tipo_acesso, nivel_avaliacao, descricao)
-VALUES ('admin', '000.000.000-00', 'admin', '$senhaCript', 'Profissional', '1', 'Admin')";
+    $sqlInsereUser = "INSERT INTO sysb.usuarios (nome, cpf, email, senha, celular, endereco,  tipo_acesso, nivel_avaliacao, descricao)
+VALUES ('admin', '000.000.000-00', 'admin', '$senhaCript', '(00)00000-0000', 'primeiro login', 'Administrador', '1', 'Admin')";
     echo "<br>";
     mysqli_query($conn, $sqlInsereUser);
 }
