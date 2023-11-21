@@ -20,7 +20,7 @@ if(!isset($_SESSION["tipo_acesso"]))
 <html lang="en">
 <!--<link rel="stylesheet" href="--><?php //echo DIRPAGE.'lib/css/style.css'; ?><!--">-->
 <!--<link rel="stylesheet" href="--><?php //echo DIRPAGE.'lib/js/FullCalendar/main.min.css'; ?><!--">-->
-<title>LACIF - AGENDA</title>
+<title>SYSB - AGENDA</title>
 
 <!--Header-->
 <?php include('includes/header.php'); ?>

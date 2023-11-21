@@ -26,9 +26,14 @@ if ($id > 0) {
 <!DOCTYPE html>
 <html lang="en">
 <script src="js/funcoes.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 
 <!--Header-->
-<title>LACIF - Editar Usuario</title>
+<title>SYSB - Editar Usuario</title>
 
 <?php include('includes/header.php'); ?>
 <!--End Header-->
@@ -36,99 +41,129 @@ if ($id > 0) {
 <body>
 <div class="be-wrapper be-fixed-sidebar">
     <!--Navigation bar-->
-    <?php include("includes/navbar.php"); ?>
+    <?php include("IncludeHeaderADM.php"); ?>
     <!--Navigation-->
 
-    <!--Sidebar-->
-    <?php include("includes/sidebar.php"); ?>
-    <!--Sidebar-->
-    <!--Sidebar-->
-    <div class="be-content">
-        <div class="main-content container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="PainelAdminAgenda.php">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="#">Usuário</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Editar Usuário</li>
-                        </ol>
-                    </nav>
-                    <div class="card card-border-color card-border-color-primary">
-                        <div class="card-header card-header-divider">Adicionar Detalhes do Usuário<span
-                                    class="card-subtitle">Por favor, preencha os dados necessários.</span></div>
-                        <div class="card-body">
-                            <form method="POST">
+    <div class="main-content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
 
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right" for="nomeExame">Digite
-                                        o Nome do Usuário</label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <input class="form-control" id="nomeUsuario" name="nomeUsuario" value="<?php  echo $linhaUnica['nome']; ?>" type="text"
-                                               required >
-                                    </div>
+                <div class="card card-border-color card-border-color-primary">
+                    <div class="card-header card-header-divider">Adicionar Detalhes Atualizado do Usuário<span
+                                class="card-subtitle">Por favor, atualize os dados necessários.</span></div>
+                    <div class="card-body">
+                        <form method="POST">
+
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="nomeExame">Digite
+                                    o Nome do Usuário</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input class="form-control" id="nomeUsuario" name="nomeUsuario"
+                                           value="<?php echo $linhaUnica['nome']; ?>" type="text"
+                                           required>
                                 </div>
+                            </div>
 
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right" for="cpfUsuario">Digite
-                                        o CPF</label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <input class="form-control" id="cpfUsuario" name="cpfUsuario" value="<?php  echo $linhaUnica['cpf']; ?>" type="text"
-                                               required>
-                                    </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="cpfUsuario">Digite
+                                    o CPF</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input class="form-control" id="cpfUsuario" name="cpfUsuario"
+                                           value="<?php echo $linhaUnica['cpf']; ?>" type="text"
+                                           required>
                                 </div>
+                            </div>
 
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right" for="emailUsuario">Digite
-                                        o Email</label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <input class="form-control" id="emailUsuario" name="emailUsuario" value="<?php  echo $linhaUnica['email']; ?>"
-                                               type="email" required>
-                                    </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="emailUsuario">Digite
+                                    o Email</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input class="form-control" id="emailUsuario" name="emailUsuario"
+                                           value="<?php echo $linhaUnica['email']; ?>"
+                                           type="email" required>
                                 </div>
+                            </div>
 
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right" for="senhaUsuario">Digite
-                                        a Senha</label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <input class="form-control" id="senhaUsuario" name="senhaUsuario" value="<?php  echo $linhaUnica['senha']; ?>"
-                                               type="password" required>
-                                    </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="senhaUsuario">Digite
+                                    a Senha</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input class="form-control" id="senhaUsuario" name="senhaUsuario"
+                                           value="<?php echo $linhaUnica['senha']; ?>"
+                                           type="password" required>
                                 </div>
+                            </div>
 
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right"
-                                           for="celularUsuario">Digite o Telefone</label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <input class="form-control" id="celularUsuario" name="celularUsuario" value="<?php  echo $linhaUnica['celular']; ?>"
-                                               type="text" required>
-                                    </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right"
+                                       for="celularUsuario">Digite o Telefone</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input class="form-control" id="celularUsuario" name="celularUsuario"
+                                           value="<?php echo $linhaUnica['celular']; ?>"
+                                           type="text" required>
                                 </div>
+                            </div>
 
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right"
-                                           for="enderecoUsuario">Digite o Endereço</label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <input class="form-control" id="enderecoUsuario" name="enderecoUsuario" value="<?php  echo $linhaUnica['endereco']; ?>"
-                                               type="text" required>
-                                    </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right"
+                                       for="enderecoUsuario">Digite o Endereço</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input class="form-control" id="enderecoUsuario" name="enderecoUsuario"
+                                           value="<?php echo $linhaUnica['endereco']; ?>"
+                                           type="text" required>
                                 </div>
+                            </div>
 
-                                <div class="col-sm-6">
-                                    <p class="text-right">
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="tipo_acesso">Nivel de Acesso</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <select class="form-control" id="tipo_acesso" name="tipo_acesso" <?php  echo $linhaUnica['tipo_acesso']; ?> required>
 
-                                        <input type="submit" id="Atualizar" name="Registrar"
-                                               class="btn btn-primary pull-right" value="Atualizar">
-                                        <br>
+                                        <?php
+                                        if ($linhaUnica['tipo_acesso'] == "Usuario") {
+                                            ?>
+                                            <option value="Usuario"selected>Usuario</option>
+                                            <option value="Profissional">Profissional</option>
+                                            <option value="Administrador">Administrador</option>
+                                            <?php
+                                        }
+                                        elseif ($linhaUnica['tipo_acesso'] == "Profissional") {
+                                            ?>
+                                            <option value="Usuario">Usuario</option>
+                                            <option value="Profissional"selected>Profissional</option>
+                                            <option value="Administrador">Administrador</option>
+
+                                            <?php
+                                        } elseif ($linhaUnica['tipo_acesso'] == "Administrador") {
+                                            ?>
+                                            <option value="Usuario">Usuario</option>
+                                            <option value="Profissional">Profissional</option>
+                                            <option value="Administrador"selected>Administrador</option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
-                        </div>
-                        <br>
-                        </form>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <p class="text-right">
+
+                                    <input type="submit" id="Atualizar" name="Registrar"
+                                           class="btn btn-primary pull-right" value="Atualizar">
+                                    <input type="button" name="cancelar" id="cancelar" class="btn btn-danger" onclick="location.href='PainelAdminAcoesUsuarios.php'" value="Voltar">
+
+                                    <br>
+                            </div>
                     </div>
+                    <br>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <!-- FORMATAR - IMPOSSIBILITAR O USUARIO DE SELECIONAR DATA ANTIGA (DATA) -->

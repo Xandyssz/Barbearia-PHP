@@ -112,12 +112,13 @@
                                 Painel
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="PainelAdminCadastrarUsuario.php">Usuario</a></li>
-                                <li><a class="dropdown-item" href="PainelAdminCadastrarServico.php">Servico</a></li>
-                                <li><a class="dropdown-item" href="PainelAdminListarProfissional.php">Listar Barbeiro</a>
-                                </li>
-                                <li><a class="dropdown-item" href="PainelAdminListarCliente.php">Listar Cliente</a></li>
-                                <li><a class="dropdown-item" href="PainelAdminListarServico.php">Listar Servico</a></li>
+                                <li><a class="dropdown-item" href="PainelAdminCadastrarUsuario.php">Cadastrar Usuario</a></li>
+                                <li><a class="dropdown-item" href="PainelAdminCadastrarServico.php">Cadastrar Servico</a></li>
+                                <li><a class="dropdown-item" href="PainelAdminListarUsuariosProfissional.php">Listar Profissionais</a></li>
+                                <li><a class="dropdown-item" href="PainelAdminListarUsuarios.php">Listar Usuarios</a></li>
+                                <li><a class="dropdown-item" href="PainelAdminListarServicos.php">Listar Servicos</a></li>
+                                <li><a class="dropdown-item" href="PainelAdminAcoesUsuarios.php">Ações Usuarios</a></li>
+                                <li><a class="dropdown-item" href="PainelAdminAcoesServicos.php">Ações Servicos</a></li>
                             </ul>
                         </li>
 

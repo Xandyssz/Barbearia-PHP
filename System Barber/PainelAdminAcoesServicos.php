@@ -20,7 +20,7 @@ if (!isset($_SESSION["tipo_acesso"])) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 <!--Header-->
-<title>SYSB - Ações Usuarios</title>
+<title>SYSB - Ações Serviço</title>
 
 <?php include('includes/header.php'); ?>
 <!--End Header-->
@@ -35,7 +35,7 @@ if (!isset($_SESSION["tipo_acesso"])) {
     <div class="card card-table">
 
                         <div class="card-header">
-                            <div class="title">Ações Usuarios</div>
+                            <div class="title">Ações Serviços</div>
                         </div>
                         <div class="card-body table-responsive">
                             <table class="table table-striped table-borderless">
@@ -43,36 +43,30 @@ if (!isset($_SESSION["tipo_acesso"])) {
                                 <tr>
                                     <th style="width:20%;">Código</th>
                                     <th style="width:20%;">Nome</th>
-                                    <th style="width:20%;">CPF</th>
-                                    <th style="width:20%;">Email</th>
-                                    <th style="width:20%;">Senha</th>
-                                    <th style="width:20%;">Celular</th>
-                                    <th style="width:20%;">Endereço</th>
-                                    <th style="width:20%;">Nivel Acesso</th>
+                                    <th style="width:20%;">Descrição</th>
+                                    <th style="width:20%;">Tempo Estimado</th>
+                                    <th style="width:10%;">Valor</th>
                                     <th style="width:20%;">Ação</th>
                                 </tr>
                                 </thead>
                                 <?php
-                                $query = "SELECT * FROM sysb.usuarios order by codigo_usuario";
+                                $query = "SELECT * FROM sysb.servico order by codigo_servico";
                                 $dados = mysqli_query($conn, $query ); // comando transação bd
 
                                 while ($linha = mysqli_fetch_assoc($dados)){
                                     ?>
                                     <tr>
-                                        <td><?php  echo $linha['codigo_usuario']; ?></td>
-                                        <td><?php  echo $linha['nome']; ?></td>
-                                        <td><?php  echo $linha['cpf']; ?></td>
-                                        <td><?php  echo $linha['email']; ?></td>
-                                        <td><?php  echo $linha['senha']; ?></td>
-                                        <td><?php  echo $linha['celular']; ?></td>
-                                        <td><?php  echo $linha['endereco']; ?></td>
-                                        <td><?php  echo $linha['tipo_acesso'];?></td>
+                                        <td><?php echo $linha['codigo_servico']; ?></td>
+                                        <td><?php echo $linha['nome']; ?></td>
+                                        <td><?php echo $linha['descricao']; ?></td>
+                                        <td><?php echo $linha['tempo']; ?></td>
+                                        <td><?php echo $linha['valor']; ?></td>
                                         <td>
                                             <?php
-                                            echo "<a href='PainelAdminEditarUsuario.php?codigo_usuario=".$linha['codigo_usuario']."' title='Alterar'><i class='fa fa-pencil-square'></i></a>";
+                                            echo "<a href='PainelAdminEditarServico.php?codigo_servico=".$linha['codigo_servico']."' title='Alterar'><i class='fa fa-pencil-square'></i></a>";
                                             echo " ";
-                                            $id = $linha['codigo_usuario'];
-                                            echo "<a href='#' title='Excluir' onclick='confirmacaoExclusaoUsuario($id);'><i class='fa fa-trash'></i></a>";
+                                            $id = $linha['codigo_servico'];
+                                            echo "<a href='#' title='Excluir' onclick='confirmacaoExclusaoServico($id);'><i class='fa fa-trash'></i></a>";
                                             ?>
                                         </td>
                                     </tr>

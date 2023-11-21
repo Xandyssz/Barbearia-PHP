@@ -22,7 +22,7 @@ if (!isset($_SESSION["tipo_acesso"])) {
         crossorigin="anonymous"></script>
 
 <!--Header-->
-<title>SYSB - Visualizar Usuarios</title>
+<title>SYSB - Visualizar Serviços</title>
 
 <?php include('includes/header.php'); ?>
 <!--End Header-->
@@ -36,7 +36,7 @@ if (!isset($_SESSION["tipo_acesso"])) {
     <p></p>
     <div class="card card-table">
         <div class="card-header">
-            <div class="title">Registro Geral dos Usuarios</div>
+            <div class="title">Registro Geral dos Serviços</div>
         </div>
         <div class="card-body table-responsive">
             <table class="table table-striped table-borderless">
@@ -44,29 +44,23 @@ if (!isset($_SESSION["tipo_acesso"])) {
                 <tr>
                     <th style="width:20%;">Código</th>
                     <th style="width:20%;">Nome</th>
-                    <th style="width:20%;">CPF</th>
-                    <th style="width:20%;">Email</th>
-                    <th style="width:10%;">Senha</th>
-                    <th style="width:20%;">Celular</th>
-                    <th style="width:20%;">Endereço</th>
-                    <th style="width:20%;">Nivel Acesso</th>
+                    <th style="width:20%;">Descrição</th>
+                    <th style="width:20%;">Tempo Estimado</th>
+                    <th style="width:10%;">Valor</th>
                 </tr>
                 </thead>
                 <?php
-                $query = "SELECT * FROM sysb.usuarios order by codigo_usuario";
+                $query = "SELECT * FROM sysb.servico order by codigo_servico";
                 $dados = mysqli_query($conn, $query); // comando transação bd
 
                 while ($linha = mysqli_fetch_assoc($dados)) {
                     ?>
                     <tr>
-                        <td><?php echo $linha['codigo_usuario']; ?></td>
+                        <td><?php echo $linha['codigo_servico']; ?></td>
                         <td><?php echo $linha['nome']; ?></td>
-                        <td><?php echo $linha['cpf']; ?></td>
-                        <td><?php echo $linha['email']; ?></td>
-                        <td><?php echo $linha['senha']; ?></td>
-                        <td><?php echo $linha['celular']; ?></td>
-                        <td><?php echo $linha['endereco']; ?></td>
-                        <td><?php echo $linha['tipo_acesso']; ?></td>
+                        <td><?php echo $linha['descricao']; ?></td>
+                        <td><?php echo $linha['tempo']; ?></td>
+                        <td><?php echo $linha['valor']; ?></td>
                     </tr>
                     <?php
                 }

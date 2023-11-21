@@ -15,6 +15,9 @@ if (!isset($_SESSION["tipo_acesso"])) {
     <html lang="en">
     <!-- ARQUIVOS JAVA SCRIPT -->
     <script src="js/funcoes.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
     <!--Header-->
     <title>SYSB - Cadastrar Serviço</title>
     <?php include('includes/header.php'); ?>
@@ -23,23 +26,11 @@ if (!isset($_SESSION["tipo_acesso"])) {
     <body>
     <div class="be-wrapper be-fixed-sidebar">
         <!--Navigation bar-->
-        <?php include("includes/navbar.php"); ?>
+        <?php include("IncludeHeaderADM.php"); ?>
         <!--Navigation-->
-
-        <!--Sidebar-->
-        <?php include("includes/sidebar.php"); ?>
-        <!--Sidebar-->
-        <div class="be-content">
             <div class="main-content container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="PainelAdminAgenda.php">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="#">Serviço</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Cadastrar Serviço</li>
-                            </ol>
-                        </nav>
                         <div class="card card-border-color card-border-color-primary">
                             <div class="card-header card-header-divider">Adicionar Detalhes do Serviço<span
                                         class="card-subtitle">Por favor, preencha os dados necessários.</span></div>

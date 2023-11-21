@@ -40,6 +40,13 @@ function OpcaoMensagens($id){
 function confirmacaoExclusaoUsuario(id) {
     var resposta = confirm("Confirmar Exclusão do Usuario??");
     if (resposta == true) {
-        window.location.href = "PainelAdminUsuarioDeletar.php?id=" + id;
+        window.location.href = "PainelAdminDeletarUsuario.php?codigo_usuario=" + id;
+    }
+}
+
+function confirmacaoExclusaoServico(id) {
+    var resposta = confirm("Confirmar Exclusão do Serviço??");
+    if (resposta == true) {
+        window.location.href = "PainelAdminDeletarServico.php?codigo_servico=" + id;
     }
 }

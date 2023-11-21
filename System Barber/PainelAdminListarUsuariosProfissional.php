@@ -15,14 +15,11 @@ if (!isset($_SESSION["tipo_acesso"])) {
 <html lang="en">
 <!-- ARQUIVOS JAVA SCRIPT -->
 <script src="js/funcoes.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 <!--Header-->
-<title>SYSB - Visualizar Usuarios</title>
+<title>SYSB - Visualizar Profissionais</title>
 
 <?php include('includes/header.php'); ?>
 <!--End Header-->
@@ -36,7 +33,7 @@ if (!isset($_SESSION["tipo_acesso"])) {
     <p></p>
     <div class="card card-table">
         <div class="card-header">
-            <div class="title">Registro Geral dos Usuarios</div>
+            <div class="title">Registro Geral dos Profissionais</div>
         </div>
         <div class="card-body table-responsive">
             <table class="table table-striped table-borderless">
@@ -53,7 +50,7 @@ if (!isset($_SESSION["tipo_acesso"])) {
                 </tr>
                 </thead>
                 <?php
-                $query = "SELECT * FROM sysb.usuarios order by codigo_usuario";
+                $query = "SELECT * FROM sysb.usuarios WHERE tipo_acesso like 'Profissional' order by codigo_usuario";
                 $dados = mysqli_query($conn, $query); // comando transação bd
 
                 while ($linha = mysqli_fetch_assoc($dados)) {
