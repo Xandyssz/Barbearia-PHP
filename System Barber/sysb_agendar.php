@@ -6,7 +6,7 @@ if(!isset($_SESSION["tipo_acesso"]))
 {
 // Usuário não logado! Redireciona para a página de login
     header("location: sysb_index.php");
-}else if($_SESSION['tipo_acesso'] != "Profissional" && $_SESSION['tipo_acesso'] != "Usuario")
+}else if($_SESSION['tipo_acesso'] != "Profissional" && $_SESSION['tipo_acesso'] != "Administrador" &&$_SESSION['tipo_acesso'] != "Usuario")
 {
     header("location: sysb_home.php");
 }
@@ -26,6 +26,7 @@ if(!isset($_SESSION["tipo_acesso"]))
 
 
     <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/funcoes.js"></script>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -126,28 +127,28 @@ if(!isset($_SESSION["tipo_acesso"]))
         </div>
         <div class="row justify-content-center">
             <div class="col-md-10 ftco-animate">
-                <form action="login.php" class="appointment-form">
+                <form method="POST">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group mb-1 mt-1">
-                                <input type="text" class="form-control" id="appointment_name" value="<?php echo $_SESSION["nome"];?>" placeholder="Nome"
+                                <input type="text" class="form-control" name="nome" id="nome" value="<?php echo $_SESSION["nome"];?>" placeholder="Nome"
                                        style="border-color: rgb(255, 208, 0);" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group mb-1 mt-1">
-                                <input type="email" class="form-control" id="appointment_email" value="<?php echo $_SESSION["email"];?>" placeholder="Email" style="border-color: rgb(255, 208, 0);" required>
+                                <input type="email" class="form-control" name="email" id="email" value="<?php echo $_SESSION["email"];?>" placeholder="Email" style="border-color: rgb(255, 208, 0);" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group mb-1 mt-1">
-                                <input type="date" class="form-control appointment_date" id="data" placeholder="Data" style="border-color: rgb(255, 208, 0);" required>
+                                <input type="date" class="form-control data" name="data" id="data" placeholder="Data" style="border-color: rgb(255, 208, 0);" required>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="form-group">
-                            <select name="time" id="time" class="form-control mb-1 mt-1" style="border-color: rgb(255, 208, 0);" required>
+                            <select name="horario" id="horario" class="form-control mb-1 mt-1" style="border-color: rgb(255, 208, 0);" required>
                                 <option value="" selected>Selecione o Horario do Corte...</option>
                                 <option value="07:00">07:00</option>
                                 <option value="07:15">07:15</option>
@@ -194,7 +195,7 @@ if(!isset($_SESSION["tipo_acesso"]))
                                 <div class="select-wrap">
 
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="servico" class="form-control mb-1 mt-1" style="border-color: rgb(255, 208, 0);" required>
+                                    <select name="servico" id="servico" class="form-control mb-1 mt-1" style="border-color: rgb(255, 208, 0);" required>
                                         <option value="" selected disabled>Selecione o Serviço...</option>
                                         <?php
                                         $query = "SELECT * FROM sysb.servico ORDER BY codigo_servico";
@@ -214,7 +215,7 @@ if(!isset($_SESSION["tipo_acesso"]))
                                 <div class="select-wrap">
 
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="" class="form-control mb-1 mt-1"
+                                    <select name="profissional" id="profissional" class="form-control mb-1 mt-1"
                                             style="border-color: rgb(255, 208, 0);" required>
                                         <option value="" select disabled>Selecione o Profissional...</option>
                                         <?php
@@ -232,13 +233,13 @@ if(!isset($_SESSION["tipo_acesso"]))
 
                         <div class="col-sm-6">
                             <div class="form-group mb-1 mt-1">
-                                <input type="text" class="form-control" id="phone" value="<?php echo $_SESSION["celular"];?>" placeholder="phone" style="border-color: rgb(255, 208, 0);" required>
+                                <input type="text" class="form-control" name="celular" id="celular" value="<?php echo $_SESSION["celular"];?>" placeholder="phone" style="border-color: rgb(255, 208, 0);" required>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="form-group mb-1 mt-1">
-                                <input type="text" class="form-control" id="comentario" placeholder="Comentário"
+                                <input type="text" class="form-control" name="comentario" id="comentario" placeholder="Comentário"
                                        style="border-color: rgb(255, 208, 0);">
                             </div>
                         </div>
@@ -246,9 +247,7 @@ if(!isset($_SESSION["tipo_acesso"]))
                     </div>
 
                     <div class="form-group mb-4 mt-4" align="center">
-                        <input type="submit" value="Finalizar agendamento" class="btn btn-primary"
-                               style="border-color: rgb(255, 208, 0); color: rgb(255, 208, 0); background-color: transparent;">
-                        <link rel="stylesheet" href="CrudUsuarioCadastrar.php" required>
+                        <input type="submit" id="Finalizar" name="Finalizar" value="Finalizar" class="btn btn-primary"style="border-color: rgb(255, 208, 0); color: rgb(255, 208, 0); background-color: transparent;">
                     </div>
                 </form>
             </div>
@@ -260,12 +259,33 @@ if(!isset($_SESSION["tipo_acesso"]))
     <?php include_once('IncludeFooter.php'); ?>
 </section>
 
+
+
+<div id="msgErro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-center">
+                <h5 class="modal-title" id="visulUsuarioModalLabel">Informação!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Ocorreu um erro. Já Existe um Agendamento nesse Dia/Horário!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--------------------------------------------------------------------------------->
 <!-- FORMATAR (TELEFONE FIXO, TELEFONE CELULAR, CEP, CNPJ, CPF E DATA) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <script>
-    $("#phone").mask("(99)99999-9999");
+    $("#celular").mask("(99)99999-9999");
 </script>
 <!--------------------------------------------------------------------------------->
 <!-- FORMATAR - IMPOSSIBILITAR O USUARIO DE SELECIONAR DATA ANTIGA (DATA) -->
@@ -290,3 +310,39 @@ if(!isset($_SESSION["tipo_acesso"]))
 
 </body>
 </html>
+
+
+<?php
+if (isset($_POST['Finalizar'])) {
+    $codigo_usuario = $_SESSION['codigo_usuario'];
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $dia = $_POST['data'];
+    $hora = $_POST['horario'];
+    $servico = $_POST['servico'];
+    $profissional = $_POST['profissional'];
+    $celular = $_POST['celular'];
+    $comentario = $_POST['comentario'];
+
+    // Adicione para trazer o código do serviço
+    $queryServico = "SELECT codigo_servico FROM sysb.servico WHERE codigo_servico = '$servico'";
+    $resultServico = mysqli_query($conn, $queryServico);
+    $rowServico = mysqli_fetch_assoc($resultServico);
+    $codigo_servico = $rowServico['codigo_servico'];
+
+    $query = "SELECT * FROM sysb.agenda agen 
+              WHERE agen.dia = '$dia' AND agen.hora = '$hora';";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<script>OpcaoMensagens(6);</script>";
+        echo '<meta HTTP-EQUIV="Refresh" CONTENT="2; URL=sysb_home.php">';
+    } else {
+        $queryInsert = "INSERT INTO sysb.agenda (codigo_usuario,  codigo_servico,nome, email, dia, hora, servico, profissional, celular, comentario)
+                   VALUES ('$codigo_usuario', '$codigo_servico', '$nome', '$email', '$dia', '$hora', '$servico', '$profissional', '$celular', '$comentario')";
+        echo "<script>OpcaoMensagens(1);</script>";
+
+        mysqli_query($conn, $queryInsert);
+    }
+}
+?>

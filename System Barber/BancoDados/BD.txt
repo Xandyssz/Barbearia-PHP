@@ -1,12 +1,9 @@
-DROP DATABASE if exists sysb;
-
-CREATE DATABASE sysb;
-
-USE sysb;
+create database sysb;
+use sysb;
 
 create table servico
 (
-    codigo_servico int auto_incrementet        not null primary key,
+    codigo_servico int auto_increment primary key,
     nome           varchar(45) not null,
     descricao      varchar(45) not null,
     tempo          varchar(45) not null,
@@ -15,13 +12,13 @@ create table servico
 
 create table usuarios
 (
-    codigo_usuario  int auto_increment         not nullprimary key,
+    codigo_usuario  int auto_increment primary key,
     nome            varchar(45)                   not null,
     cpf             varchar(45)                   not null,
     email           varchar(45)                   not null,
     senha           varchar(250)                  not null,
     celular         varchar(20)                   not null,
-    endereco        varchar(200)                  not null,
+    endereco        varchar(250)                  not null,
     tipo_acesso     varchar(45) default 'Usuario' not null,
     nivel_avaliacao int                           null,
     descricao       varchar(250)                  null,
@@ -30,33 +27,28 @@ create table usuarios
 
 create table agenda
 (
-    codigo_agenda  int                            not null,
+    codigo_agenda  int auto_increment,
     codigo_usuario int                            not null,
+    codigo_servico int                            not null,
+    nome           varchar(50)                    null,
+    email          varchar(150)                   null,
     dia            varchar(45)                    not null,
     hora           varchar(45)                    not null,
+    servico        varchar(50)                    null,
+    profissional   varchar(50)                    null,
+    celular        varchar(20)                    null,
+    comentario     varchar(45)                    not null,
     status         varchar(45) default 'Pendente' not null,
-    primary key (codigo_agenda, codigo_usuario),
-    constraint agenda_ibfk_1
-        foreign key (codigo_usuario) references usuarios (codigo_usuario)
+    primary key (codigo_agenda, codigo_usuario, codigo_servico),
+    constraint agenda_ibfk_1 foreign key (codigo_usuario) references usuarios (codigo_usuario),
+    constraint agenda_ibfk_2 foreign key (codigo_servico) references servico (codigo_servico)
 );
+
+create index codigo_servico
+    on agenda (codigo_servico);
 
 create index codigo_usuario
     on agenda (codigo_usuario);
-
-create table agendaservico
-(
-    servico_codigo_servico int not null,
-    agenda_codigo_agenda   int not null,
-    agenda_codigo_usuario  int not null,
-    primary key (servico_codigo_servico, agenda_codigo_agenda, agenda_codigo_usuario),
-    constraint agendaservico_ibfk_1
-        foreign key (servico_codigo_servico) references servico (codigo_servico),
-    constraint agendaservico_ibfk_2
-        foreign key (agenda_codigo_agenda, agenda_codigo_usuario) references agenda (codigo_agenda, codigo_usuario)
-);
-
-create index agenda_codigo_agenda
-    on agendaservico (agenda_codigo_agenda, agenda_codigo_usuario);
 
 create table avaliacao
 (
@@ -71,9 +63,6 @@ create table avaliacao
         foreign key (codigo_servico) references servico (codigo_servico)
 );
 
-create index codigo_servico
-    on avaliacao (codigo_servico);
+create index codigo_servico on avaliacao (codigo_servico);
 
-create index codigo_usuario
-    on avaliacao (codigo_usuario);
-
+create index codigo_usuario on avaliacao (codigo_usuario);

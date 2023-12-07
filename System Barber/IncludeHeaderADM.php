@@ -117,8 +117,11 @@
                                 <li><a class="dropdown-item" href="PainelAdminListarUsuariosProfissional.php">Listar Profissionais</a></li>
                                 <li><a class="dropdown-item" href="PainelAdminListarUsuarios.php">Listar Usuarios</a></li>
                                 <li><a class="dropdown-item" href="PainelAdminListarServicos.php">Listar Servicos</a></li>
+                                <li><a class="dropdown-item" href="PainelAdminListarAgendamentos.php">Listar Agendamentos</a></li>
                                 <li><a class="dropdown-item" href="PainelAdminAcoesUsuarios.php">Ações Usuarios</a></li>
                                 <li><a class="dropdown-item" href="PainelAdminAcoesServicos.php">Ações Servicos</a></li>
+                                <li><a class="dropdown-item" href="PainelAdminAcoesAgendamentos.php">Ações Agendamentos</a></li>
+
                             </ul>
                         </li>
 

@@ -15,11 +15,14 @@ if (!isset($_SESSION["tipo_acesso"])) {
 <html lang="en">
 <!-- ARQUIVOS JAVA SCRIPT -->
 <script src="js/funcoes.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 
 <!--Header-->
-<title>SYSB - Visualizar Serviços</title>
+<title>SYSB - Visualizar Agendamentos</title>
 
 <?php include('includes/header.php'); ?>
 <!--End Header-->
@@ -33,31 +36,47 @@ if (!isset($_SESSION["tipo_acesso"])) {
     <p></p>
     <div class="card card-table">
         <div class="card-header">
-            <div class="title">Registro Geral dos Serviços</div>
+            <div class="title">Registro Geral dos Agendamentos</div>
         </div>
         <div class="card-body table-responsive">
             <table class="table table-striped table-borderless">
                 <thead>
                 <tr>
-                    <th style="width:20%;">Código</th>
-                    <th style="width:20%;">Nome</th>
-                    <th style="width:20%;">Descrição</th>
-                    <th style="width:20%;">Tempo Estimado</th>
-                    <th style="width:10%;">Valor</th>
+                    <th>Agendamento</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Dia</th>
+                    <th>Hora</th>
+                    <th>Servico</th>
+                    <th>Profissional</th>
+                    <th>Celular</th>
+                    <th>Comentario</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <?php
-                $query = "SELECT * FROM sysb.servico order by codigo_servico";
-                $dados = mysqli_query($conn, $query); // comando transação bd
+                $query = "SELECT sysb.agenda.*, sysb.servico.nome as nome_servico, sysb.usuarios.nome as nome_profissional
+          FROM sysb.agenda
+          LEFT JOIN sysb.servico ON sysb.agenda.servico = sysb.servico.codigo_servico
+          LEFT JOIN sysb.usuarios ON sysb.agenda.profissional = sysb.usuarios.codigo_usuario
+          WHERE sysb.usuarios.tipo_acesso = 'Profissional'
+          ORDER BY sysb.agenda.codigo_agenda";
+                $dados = mysqli_query($conn, $query);
 
                 while ($linha = mysqli_fetch_assoc($dados)) {
+                    $dataConvertida = implode('/', array_reverse(explode('-', $linha['dia'])));
                     ?>
                     <tr>
-                        <td><?php echo $linha['codigo_servico']; ?></td>
+                        <td><?php echo $linha['codigo_agenda']; ?></td>
                         <td><?php echo $linha['nome']; ?></td>
-                        <td><?php echo $linha['descricao']; ?></td>
-                        <td><?php echo $linha['tempo']; ?></td>
-                        <td><?php echo $linha['valor']; ?></td>
+                        <td><?php echo $linha['email']; ?></td>
+                        <td><?php echo $dataConvertida; ?></td>
+                        <td><?php echo $linha['hora']; ?></td>
+                        <td><?php echo $linha['nome_servico']; ?></td>
+                        <td><?php echo $linha['nome_profissional']; ?></td>
+                        <td><?php echo $linha['celular']; ?></td>
+                        <td><?php echo $linha['comentario']; ?></td>
+                        <td><?php echo $linha['status']; ?></td>
                     </tr>
                     <?php
                 }
