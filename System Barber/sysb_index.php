@@ -86,7 +86,7 @@ if (isset($_SESSION['tipo_acesso'])) {
                     <div class="card-body" style="color: rgb(255,255,255);">
                         <h5 class="card-title"><?php echo $row['nome']; ?></h5>
                         <h6 class="card-subtitle mb-2"><?php echo $row['descricao']; ?></h6>
-                        <p class="card-text"><?php echo "R$" . $row['valor']; ?></p>
+                        <p class="card-text"><?php echo $row['valor']; ?></p>
                         <button class="btn-outline-success"><a href="sysb_agendar.php"
                                                                style="color: white; text-decoration: none;">Ir para o
                                 agendamento</a></button>
@@ -113,7 +113,7 @@ if (isset($_SESSION['tipo_acesso'])) {
                 ?>
                 <div class="card bg-dark"
                      style="width: 18rem; color: rgb(255,255,255); border-color: rgb(255, 208, 0); margin: 10px;">
-                    <img src="img/<?php echo $row['img_user'] ?>" class="card-img-top mt-3" alt="...">
+                    <img src="images/<?php echo $row['img_user'] ?>" class="card-img-top mt-3" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $row['nome'] ?></h5>
                         <p class="card-text"><?php echo $row['descricao'] ?></p>

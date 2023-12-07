@@ -39,14 +39,14 @@ if (!isset($_SESSION["tipo_acesso"])) {
             <table class="table table-striped table-borderless">
                 <thead>
                 <tr>
-                    <th style="width:20%;">Código</th>
-                    <th style="width:20%;">Nome</th>
-                    <th style="width:20%;">CPF</th>
-                    <th style="width:20%;">Email</th>
-                    <th style="width:10%;">Senha</th>
-                    <th style="width:20%;">Celular</th>
-                    <th style="width:20%;">Endereço</th>
-                    <th style="width:20%;">Nivel Acesso</th>
+                    <th >Código</th>
+                    <th>Imagem</th>
+                    <th >Nome</th>
+                    <th >CPF</th>
+                    <th >Email</th>
+                    <th >Celular</th>
+                    <th >Endereço</th>
+                    <th >Nivel Acesso</th>
                 </tr>
                 </thead>
                 <?php
@@ -57,10 +57,13 @@ if (!isset($_SESSION["tipo_acesso"])) {
                     ?>
                     <tr>
                         <td><?php echo $linha['codigo_usuario']; ?></td>
+                        <td>
+                            <img src="images/<?php echo $linha['img_user'];?>"
+                                 alt="Imagem" width="60" heigth="60">
+                        </td>
                         <td><?php echo $linha['nome']; ?></td>
                         <td><?php echo $linha['cpf']; ?></td>
                         <td><?php echo $linha['email']; ?></td>
-                        <td><?php echo $linha['senha']; ?></td>
                         <td><?php echo $linha['celular']; ?></td>
                         <td><?php echo $linha['endereco']; ?></td>
                         <td><?php echo $linha['tipo_acesso']; ?></td>

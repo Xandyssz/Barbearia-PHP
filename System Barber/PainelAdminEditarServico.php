@@ -58,34 +58,34 @@ if ($id > 0) {
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right" for="nomeExame">Digite
                                     o Nome do Serviço</label>
                                 <div class="col-12 col-sm-8 col-lg-6">
-                                    <input class="form-control" id="nomeServico" name="nomeServico" value="<?php  echo $linhaUnica['nome']; ?>" type="text"
+                                    <input class="form-control" id="nome" name="nome" value="<?php  echo $linhaUnica['nome']; ?>" type="text"
                                            required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right"
-                                       for="descricaoServico">Digite a Descrição do Serviço</label>
+                                       for="descricao">Digite a Descrição do Serviço</label>
                                 <div class="col-12 col-sm-8 col-lg-6">
-                                    <input class="form-control" id="descricaoServico" name="descricaoServico" value="<?php  echo $linhaUnica['descricao']; ?>"
+                                    <input class="form-control" id="descricao" name="descricao" value="<?php  echo $linhaUnica['descricao']; ?>"
                                            type="text" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="tempoServico">Temp
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="tempo">Temp
                                     Estimado de Serviço</label>
                                 <div class="col-12 col-sm-8 col-lg-6">
-                                    <input class="form-control" id="tempoServico" name="tempoServico" value="<?php  echo $linhaUnica['tempo']; ?>"
+                                    <input class="form-control" id="tempo" name="tempo" value="<?php  echo $linhaUnica['tempo']; ?>"
                                            type="time" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="valorServico">Digite
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="valor">Digite
                                     o Valor do Exame</label>
                                 <div class="col-12 col-sm-8 col-lg-6">
-                                    <input class="form-control" id="valorServico" name="valorServico" value="<?php  echo $linhaUnica['valor']; ?>"
+                                    <input class="form-control" id="valor" name="valor" value="<?php  echo $linhaUnica['valor']; ?>"
                                            type="text" required>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ if ($id > 0) {
                             <div class="col-sm-6">
                                 <p class="text-right">
 
-                                    <input type="submit" id="Atualizar" name="Registrar"
+                                    <input type="submit" id="Atualizar" name="Atualizar"
                                            class="btn btn-primary pull-right" value="Atualizar">
                                     <input type="button" name="cancelar" id="cancelar" class="btn btn-danger" onclick="location.href='PainelAdminAcoesServicos.php'" value="Voltar">
 
@@ -134,13 +134,10 @@ if ($id > 0) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <script>
-    $("#celular").mask("(99) 99999-9999");
-    $("#cpf").mask("999.999.999-99");
+    $("#valor").mask("R$999,99");
 </script>
-<script>
-    $(#celular).mask("(99) 99999-9999");
-    $(#cpf).mask("999.999.999-99");
-</script>
+
+
 
 </div>
 
@@ -219,33 +216,20 @@ if ($id > 0) {
 <?php
 if (isset($_POST['Atualizar'])) {
     $nome = $_POST['nome'];
-    $cpf = $_POST['cpf'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $senhaCript = password_hash($senha, PASSWORD_DEFAULT);
-    $celular = $_POST['celular'];
-    $endereco = $_POST['endereco'];
-    $tiposanguineo = $_POST['tiposanguineo'];
-    $sexo = $_POST['sexo'];
-    $datanasc = $_POST['datanasc'];
-    $tipo_acesso = $_POST['tipo_acesso'];
+    $descricao = $_POST['descricao'];
+    $tempo = $_POST['tempo'];
+    $valor = $_POST['valor'];
 
-//sql to inset the values to the database
-    $result = "update ifsp_lacif.usuarios 
+    $result = "update sysb.servico 
 set nome = '$nome', 
-    cpf='$cpf', 
-    email='$email',
-    senha='$senhaCript', 
-    celular='$celular', 
-    endereco='$endereco',
-    tiposanguineo='$tiposanguineo',
-    sexo='$sexo',
-    datanasc='$datanasc', 
-    tipo_acesso='$tipo_acesso' where idusuario= $id";
+    descricao = '$descricao',
+    tempo = '$tempo',
+    valor = '$valor'
+    where codigo_servico= $id";
     $row = mysqli_query($conn, $result);
 
-    echo "<script>$(document).ready(function() { $('#msgInsert').modal(); })</script>";
-    echo '<meta HTTP-EQUIV="Refresh" CONTENT="2; URL=PainelAdminAcoesUsuario.php">';
+    echo "<script>OpcaoMensagens(2);</script>";
+    echo '<meta HTTP-EQUIV="Refresh" CONTENT="2; URL=PainelAdminAcoesServicos.php">';
 
 }
 ?>

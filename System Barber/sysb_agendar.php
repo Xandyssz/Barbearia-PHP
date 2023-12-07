@@ -72,7 +72,7 @@ if(!isset($_SESSION["tipo_acesso"]))
                     <div class="card-body" style="color: rgb(255,255,255);">
                         <h5 class="card-title"><?php echo $row['nome']; ?></h5>
                         <h6 class="card-subtitle mb-2"><?php echo $row['descricao']; ?></h6>
-                        <p class="card-text"><?php echo "R$" . $row['valor']; ?></p>
+                        <p class="card-text"><?php echo $row['valor']; ?></p>
                         <button class="btn-outline-success"><a href="sysb_agendar.php"
                                                                style="color: white; text-decoration: none;">Ir para o
                                 agendamento</a></button>
@@ -100,7 +100,7 @@ if(!isset($_SESSION["tipo_acesso"]))
             ?>
             <div class="card bg-dark"
                  style="width: 18rem; color: rgb(255,255,255); border-color: rgb(255, 208, 0); margin: 10px;">
-                <img src="img/<?php echo $row['img_user'] ?>" class="card-img-top mt-3" alt="...">
+                <img src="images/<?php echo $row['img_user'] ?>" class="card-img-top mt-3" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row['nome'] ?></h5>
                     <p class="card-text"><?php echo $row['descricao'] ?></p>
@@ -113,7 +113,9 @@ if(!isset($_SESSION["tipo_acesso"]))
     </div>
 
     <p></p>
+
     <hr style="color: lightgrey;">
+
     <div class="container ftco-relative" id="agendar">
         <div class="row justify-content-center pb-3">
             <div class="col-md-10 heading-section text-center mt-5" style="color: rgb(255, 208, 0);">
@@ -128,27 +130,62 @@ if(!isset($_SESSION["tipo_acesso"]))
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group mb-1 mt-1">
-                                <input type="text" class="form-control" id="appointment_name" placeholder="Nome"
+                                <input type="text" class="form-control" id="appointment_name" value="<?php echo $_SESSION["nome"];?>" placeholder="Nome"
                                        style="border-color: rgb(255, 208, 0);" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group mb-1 mt-1">
-                                <input type="email" class="form-control" id="appointment_email" placeholder="Email"
-                                       style="border-color: rgb(255, 208, 0);" required>
+                                <input type="email" class="form-control" id="appointment_email" value="<?php echo $_SESSION["email"];?>" placeholder="Email" style="border-color: rgb(255, 208, 0);" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group mb-1 mt-1">
-                                <input type="date" class="form-control appointment_date" placeholder="Data"
-                                       style="border-color: rgb(255, 208, 0);" required>
+                                <input type="date" class="form-control appointment_date" id="data" placeholder="Data" style="border-color: rgb(255, 208, 0);" required>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input type="time" class="form-control appointment_time mb-1 mt-1 "
-                                       placeholder="Horário" style="border-color: rgb(255, 208, 0);" required>
+                            <select name="time" id="time" class="form-control mb-1 mt-1" style="border-color: rgb(255, 208, 0);" required>
+                                <option value="" selected>Selecione o Horario do Corte...</option>
+                                <option value="07:00">07:00</option>
+                                <option value="07:15">07:15</option>
+                                <option value="07:30">07:30</option>
+                                <option value="07:45">07:45</option>
+                                <option value="08:00">08:00</option>
+                                <option value="08:15">08:15</option>
+                                <option value="08:30">08:30</option>
+                                <option value="08:45">08:45</option>
+                                <option value="09:00">09:00</option>
+                                <option value="09:15">09:15</option>
+                                <option value="09:30">09:30</option>
+                                <option value="09:45">09:45</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:15">10:15</option>
+                                <option value="10:30">10:30</option>
+                                <option value="10:45">10:45</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:15">11:15</option>
+                                <option value="11:30">11:30</option>
+                                <option value="11:45">11:45</option>
+                                <option value="11:45">14:00</option>
+                                <option value="14:15">14:15</option>
+                                <option value="14:30">14:30</option>
+                                <option value="14:45">14:45</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:15">15:15</option>
+                                <option value="15:30">15:30</option>
+                                <option value="15:45">15:45</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:15">16:15</option>
+                                <option value="16:30">16:30</option>
+                                <option value="16:45">16:45</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:15">17:15</option>
+                                <option value="17:30">17:30</option>
+                                <option value="17:45">17:45</option>
+                            </select>
                             </div>
                         </div>
 
@@ -157,12 +194,16 @@ if(!isset($_SESSION["tipo_acesso"]))
                                 <div class="select-wrap">
 
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="servico" class="form-control mb-1 mt-1"
-                                            style="border-color: rgb(255, 208, 0);" required>
-                                        <option value="" disabled selected>Selecione o serviço</option>
-                                        <option value="" id="s1">Serviço 1</option>
-                                        <option value="" id="s2">Serviço 2</option>
-                                        <option value="" id="s3">Serviço 3</option>
+                                    <select name="" id="servico" class="form-control mb-1 mt-1" style="border-color: rgb(255, 208, 0);" required>
+                                        <option value="" selected disabled>Selecione o Serviço...</option>
+                                        <?php
+                                        $query = "SELECT * FROM sysb.servico ORDER BY codigo_servico";
+                                        $resultado = mysqli_query($conn, $query);
+                                        while ($linha = mysqli_fetch_assoc($resultado)) { ?>
+                                            <option value="<?php echo $linha['codigo_servico']; ?>"><?php echo $linha['nome'];?></option>
+                                            <?php
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -175,10 +216,15 @@ if(!isset($_SESSION["tipo_acesso"]))
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                     <select name="" id="" class="form-control mb-1 mt-1"
                                             style="border-color: rgb(255, 208, 0);" required>
-                                        <option value="" disabled selected>Selecione o Barbeiro</option>
-                                        <option value="">Nome</option>
-                                        <option value="">Nome</option>
-                                        <option value="">Nome</option>
+                                        <option value="" select disabled>Selecione o Profissional...</option>
+                                        <?php
+                                        $query = "SELECT * FROM sysb.usuarios WHERE tipo_acesso = 'Profissional' ORDER BY codigo_usuario";
+                                        $resultado = mysqli_query($conn, $query);
+                                        while ($linha = mysqli_fetch_assoc($resultado)) { ?>
+                                            <option value="<?php echo $linha['codigo_usuario']; ?>"><?php echo $linha['nome'];?></option>
+                                            <?php
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -186,8 +232,7 @@ if(!isset($_SESSION["tipo_acesso"]))
 
                         <div class="col-sm-6">
                             <div class="form-group mb-1 mt-1">
-                                <input type="text" class="form-control" id="phone" placeholder="Phone"
-                                       style="border-color: rgb(255, 208, 0);" required>
+                                <input type="text" class="form-control" id="phone" value="<?php echo $_SESSION["celular"];?>" placeholder="phone" style="border-color: rgb(255, 208, 0);" required>
                             </div>
                         </div>
 
@@ -222,10 +267,26 @@ if(!isset($_SESSION["tipo_acesso"]))
 <script>
     $("#phone").mask("(99)99999-9999");
 </script>
-<script>
-    $("#phone").mask("(99)99999-9999");
-</script>
 <!--------------------------------------------------------------------------------->
+<!-- FORMATAR - IMPOSSIBILITAR O USUARIO DE SELECIONAR DATA ANTIGA (DATA) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+            day = '0' + day.toString();
+        var maxDate = year + '-' + month + '-' + day;
+
+        $('#data').attr('min', maxDate);
+
+    });
+</script>
 
 </body>
 </html>

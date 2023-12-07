@@ -38,37 +38,37 @@ if (!isset($_SESSION["tipo_acesso"])) {
                                 <form method="POST">
 
                                     <div class="form-group row">
-                                        <label class="col-12 col-sm-3 col-form-label text-sm-right" for="nomeExame">Digite
+                                        <label class="col-12 col-sm-3 col-form-label text-sm-right" for="nome">Digite
                                             o Nome do Serviço</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
-                                            <input class="form-control" id="nomeServico" name="nomeServico" type="text"
+                                            <input class="form-control" id="nome" name="nome" type="text"
                                                    required>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-12 col-sm-3 col-form-label text-sm-right"
-                                               for="descricaoServico">Digite a Descrição do Serviço</label>
+                                               for="descricao">Digite a Descrição do Serviço</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
-                                            <input class="form-control" id="descricaoServico" name="descricaoServico"
+                                            <input class="form-control" id="descricao" name="descricao"
                                                    type="text" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-12 col-sm-3 col-form-label text-sm-right" for="tempoServico">Temp
+                                        <label class="col-12 col-sm-3 col-form-label text-sm-right" for="tempo">Temp
                                             Estimado de Serviço</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
-                                            <input class="form-control" id="tempoServico" name="tempoServico"
+                                            <input class="form-control" id="tempo" name="tempo"
                                                    type="time" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-12 col-sm-3 col-form-label text-sm-right" for="valorServico">Digite
-                                            o Valor do Exame</label>
+                                        <label class="col-12 col-sm-3 col-form-label text-sm-right" for="valor">Digite
+                                            o Valor do Serviço</label>
                                         <div class="col-12 col-sm-8 col-lg-6">
-                                            <input class="form-control" id="valorServico" name="valorServico"
+                                            <input class="form-control" id="valor" name="valor"
                                                    type="text" required>
                                         </div>
                                     </div>
@@ -96,77 +96,9 @@ if (!isset($_SESSION["tipo_acesso"])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script>
-        $("#valorServico").mask("R$999,99");
+        $("#valor").mask("R$999,99");
 
     </script>
-    <script>
-        $(#valorServico).mask("R$999,99");
-    </script>
-
-
-    <!-- JANELA MODAL -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-    <div id="msgInsert" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-center">
-                    <h5 class="modal-title" id="visulTipo ExameModalLabel">Informação!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Serviço Cadastrado com Sucesso!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="msgErro" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-danger text-center">
-                    <h5 class="modal-title" id="visulTipo ExameModalLabel">Informação!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Ocorreu um erro!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="msgconflito" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-danger text-center">
-                    <h5 class="modal-title" id="visulUsuarioModalLabel">Informação!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Ocorreu um erro, Serviço já cadastrado!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-info" data-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
@@ -201,10 +133,10 @@ if (!isset($_SESSION["tipo_acesso"])) {
 <?php
 
 if (isset($_POST['Registrar'])) {
-    $nome = $_POST['nomeServico'];
-    $descricao = $_POST['descricaoServico'];
-    $tempo = $_POST['tempoServico'];
-    $valor = $_POST['valorServico'];
+    $nome = $_POST['nome'];
+    $descricao = $_POST['descricao'];
+    $tempo = $_POST['tempo'];
+    $valor = $_POST['valor'];
 
     $query = "SELECT * FROM sysb.servico serv 
     WHERE serv.nome = '$nome'";
@@ -220,7 +152,7 @@ if (isset($_POST['Registrar'])) {
         $result = "INSERT INTO sysb.servico (nome, descricao, tempo, valor) 
         VALUES ('$nome', '$descricao', '$tempo', '$valor')";
         $row = mysqli_query($conn, $result);
-        echo "<script>$(document).ready(function() { $('#msgInsert').modal(); })</script>";
+        echo "<script>OpcaoMensagens(1);</script>";
         echo '<meta HTTP-EQUIV="Refresh" CONTENT="2; URL=PainelAdminListarServicos.php">';
     }
 

@@ -26,6 +26,7 @@ if (!empty($_POST) && (empty($_POST['email']) || empty($_POST['senha']))) {
             $_SESSION['nome']  = $nivel['nome'];
             $_SESSION['cpf']  = $nivel['cpf'];
             $_SESSION['email'] = $nivel['email'];
+            $_SESSION['celular'] = $nivel['celular'];
             $_SESSION['senha'] = $nivel['senha'];
             $_SESSION['tipo_acesso'] = $nivel['tipo_acesso'];
             $_SESSION['nivel_avaliacao'] = $nivel['nivel_avaliacao'];
@@ -40,6 +41,7 @@ if (!empty($_POST) && (empty($_POST['email']) || empty($_POST['senha']))) {
             unset($_SESSION['codigo_usuario']);
             unset($_SESSION['nome']);
             unset($_SESSION['cpf']);
+            unset($_SESSION['celular']);
             unset($_SESSION['email']);
             unset($_SESSION['senha']);
             unset($_SESSION['tipo_acesso']);
