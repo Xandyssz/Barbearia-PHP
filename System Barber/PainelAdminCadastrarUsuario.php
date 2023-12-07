@@ -168,7 +168,7 @@ if (isset($_POST['Registrar'])) {
 
     // SE EXISITIR DA ERRO, SE NÃO CADASTRA.
     if (mysqli_num_rows($row) > 0) {
-        echo "<script>$(document).ready(function() { $('#msgconflito').modal(); })</script>";
+        echo "<script>OpcaoMensagens(5);</script>";
         echo '<meta HTTP-EQUIV="Refresh" CONTENT="2; URL=PainelAdminCadastrarUsuario.php">';
 
     } else {
